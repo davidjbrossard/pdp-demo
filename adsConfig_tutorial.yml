@@ -1,0 +1,87 @@
+## Access Decision Service part of configuration. See Axiomatics documentation
+#### Path to license file
+license: file:${ADS_LICENSE_PATH:-./conf/}axiomatics_PDP.license
+#### Path to YAML configuration file, "domain.xml" is a sample file.
+domain: file:${ADS_DOMAIN_PATH:-./conf/}domain_${ADS_DOMAIN_NAME}.yaml
+
+#
+# To retrieve domain from ADM comment the line above and
+# uncomment the following 5 lines
+#
+#domain: http://trn01.mycompany.local:${ADM_APP_PORT:-8480}/api/namespaces/Training/names/domain_${ADS_DOMAIN_NAME}/domain
+#httpClientConfiguration:
+#  domainUser: ${ADM_USER:-adm-user}
+#  domainPassword: ${ADM_PASSWORD:-Attributes}
+#  timeout: 5 seconds
+
+domainRefreshInterval: 60 seconds
+reportUnhealthyOnDomainRefreshError: true
+failOnDeclaredAttributeNotProvided: false
+
+authentication:
+  type: Basic
+  user:
+    username: ${ADS_USER:-ads-user}
+    hashPassword: ${ADS_PASSWORD:-4b0ed88f7d99420fb3ba2c68e20992280f6dcac4afaf32da17bee89c656c2ccf}
+
+## Dropwizard part of configuration. See http://www.dropwizard.io/1.3.5/docs/manual/configuration.html
+server:
+  applicationConnectors:
+  - type: http
+    port: ${ADS_AUTHZ_PORT:-8380}
+  adminConnectors:
+  - type: http
+    port: ${ADS_ADMIN_PORT:-8381}
+
+audit:
+  mode: verbose
+
+# https://www.dropwizard.io/en/latest/manual/core.html#logging
+logging:
+  level: WARN
+  loggers:
+    "com.axiomatics.audit.ads.admin":
+      level: INFO
+      additive: false
+      appenders:
+        - type: file
+          layout:
+            #type: json
+          threshold: INFO
+          # uncomment to remove log level, timestamp and class name
+          # logFormat: "%m%n"
+          currentLogFilename: ../ads/logs/ads-admin-event.log
+          archivedLogFilenamePattern: ../ads/logs/ads-admin-event-%d{yyyy-MM-dd}-%i.log.gz
+          archivedFileCount: 7
+          timeZone: system
+          maxFileSize: 10MB
+    "com.axiomatics.audit.ads.eval":
+      level: INFO
+      additive: false
+      appenders:
+        - type: file
+          layout:
+            #type: json
+          threshold: INFO
+          # uncomment to remove log level, timestamp and class name
+          # logFormat: "%m%n"
+          currentLogFilename: ../ads/logs/ads-eval-event.xml
+          archivedLogFilenamePattern: ../ads/logs/ads-eval-event-%d{yyyy-MM-dd}-%i.log.gz
+          archivedFileCount: 7
+          timeZone: system
+          maxFileSize: 10MB
+    "com.axiomatics.ads.core.evaluator.EvaluatorService": OFF
+    "com.axiomatics": INFO
+    "com.axiomatics.delegent.pipcache.jcs": OFF
+    #"com.axiomatics.delegent": TRACE
+    #"com.axiomatics.attributeconnector.ldap": DEBUG
+    #"com.axiomatics.attributeconnector.jdbc": DEBUG
+    "com.axiomatics.attributeconnector.table": INFO
+  appenders:
+  - type: console
+    target: stdout
+    timeZone: system
+    #layout:
+    #  type: json
+    #  prettyPrint: true
+    #logFormat: "%m%n"
