@@ -1,0 +1,8 @@
+namespace demo{
+    policy allowAll{
+        apply firstApplicable
+        rule allow {
+            permit
+        }
+    }
+}
