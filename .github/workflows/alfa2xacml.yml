@@ -1,3 +1,7 @@
+name: Convert ALFA to XACML
+on:
+  push:
+    path: config/alfa
 steps:
 - uses: actions/checkout@v4
 - uses: actions/setup-java@v4
