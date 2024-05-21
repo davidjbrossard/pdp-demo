@@ -1,0 +1,17 @@
+name: Convert ALFA to XACML
+on:
+  push:
+    paths:
+      - config/alfa
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Run ALFAC Compiler
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu' # See 'Supported distributions' for available options
+        java-version: '11'
+    - run: java -jar "bin/alfac.jar" "config/policy/alfa" -o ../config/policy/xacml
