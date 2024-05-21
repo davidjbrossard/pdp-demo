@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/json/configuration" identifier="records.parser">
+    <source>
+        <xacmlAttribute AttributeId="records.json" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" />
+    </source>
+    <mapping>
+        <xacmlAttribute AttributeId="record.department" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.[?(@.id==##1##)].department</jsonPath>
+        <key>
+            <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="records.id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+        </key>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.name" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.[?(@.id==####)].name</jsonPath>
+        <key>
+            <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="records.id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+        </key>
+    </mapping>
+</configuration>

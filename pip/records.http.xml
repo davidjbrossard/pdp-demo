@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/http.config" identifier="aadRecipientPayload">
+    <connection>
+        <url>https://davidjbrossard.github.io/pdp-demo/data/records.json</url>
+        <method>GET</method>
+    </connection>
+    <mapping>
+        <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" 
+                        AttributeId="records.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+        <contentType>application/json</contentType>
+    </mapping>
+</configuration>
