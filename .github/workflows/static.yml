@@ -6,7 +6,7 @@ on:
   push:
     branches: ["main"]
     paths: 
-      - 'domain_tutorial.yaml'
+      - './domain_tutorial*.yaml'
       - 'data/*'
 
   # Allows you to run this workflow manually from the Actions tab
