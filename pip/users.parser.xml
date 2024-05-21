@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/json/configuration" identifier="demoUserParser">
+    <source>
+        <xacmlAttribute AttributeId="users.json" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" />
+    </source>
+    <mapping>
+        <xacmlAttribute AttributeId="user.role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.[?(@.name == '##1##')].role</jsonPath>
+        <key>
+            <xacmlAttribute AttributeId="user.name" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+        </key>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="user.department" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.[?(@.name == '##1##')].department</jsonPath>
+        <key>
+            <xacmlAttribute AttributeId="user.name" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+        </key>
+    </mapping>
+</configuration>

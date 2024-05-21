@@ -24,6 +24,14 @@ attributes:
     xacmlId: record.recordId
     category: Resource
     datatype: string
+  record.name:
+    xacmlId: record.name
+    category: Resource
+    datatype: string
+  records.json:
+    xacmlId: records.json
+    category: Resource
+    datatype: string
   record.owner:
     xacmlId: record.owner
     category: Resource
@@ -36,6 +44,10 @@ attributes:
     xacmlId: user.employeeId
     category: AccessSubject
     datatype: string
+  users.json:
+    xacmlId: users.json
+    category: AccessSubject
+    datatype: string
   user.subordinate:
     xacmlId: user.subordinate
     category: AccessSubject
@@ -44,45 +56,34 @@ attributes:
     xacmlId: user.role
     category: AccessSubject
     datatype: string
+  user.name:
+    xacmlId: user.name
+    category: AccessSubject
+    datatype: string
   user.department:
     xacmlId: user.department
     category: AccessSubject
     datatype: string
 attributeConnectors:
-  Github:
+  GithubUsers:
     className: com.axiomatics.attributeconnector.http.ConnectorModule
     provides:
-    - recipient.internal.idp_data
-    configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<configuration\
-      \ xmlns=\"http://www.axiomatics.com/http.config\" identifier=\"aadRecipientPayload\"\
-      >\n    <connection>\n\t\t<url><![CDATA[https://graph.microsoft.us/v1.0/users/?$filter=proxyAddresses/any(p:p\
-      \ eq ‘smtp:{0}’)&$select=employeeid,extension_2525e567f2b741c3aa989715bdcdf415_geECindicator]]></url>\n\
-      \t\t<authentication authenticationMode=\"OAuth2\">\n\t\t\t<tokenUrl>https://login.microsoftonline.com/${AZURE_AD_TENANT_ID:-000000}/oauth2/v2.0/token</tokenUrl>\n\
-      \t\t\t<clientId>${AZURE_AD_CLIENT_ID:-111111111}</clientId>\n\t\t\t<clientSecret>${AZURE_AD_CLIENT_SECRET:-2222222}</clientSecret>\n\
-      \t\t\t<scope>https://graph.microsoft.com/.default</scope>\n\t\t</authentication>\n\
-      \t\t<connectionKey>\n\t\t\t<xacmlAttribute Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject\"\
-      \ AttributeId=\"recipient.email\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"\
-      />\n\t\t</connectionKey>\n        <method>GET</method>\n\t\t<ignoredHttpCode>404</ignoredHttpCode>\n\
-      \    </connection>\n    <mapping>\n\t\t<xacmlAttribute Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject\"\
-      \ AttributeId=\"recipient.internal.idp_data\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"\
-      \ Issuer=\"\"/>\n\t\t<contentType>application/json</contentType>\n\t\t<template\
-      \ classpath=\"true\" payload=\"false\">/request.template.json</template>\n \
-      \   </mapping>\n</configuration>"
-  payloadParser:
+    - users.json
+    configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><configuration xmlns=\"http://www.axiomatics.com/http.config\" identifier=\"demoUserJson\"><connection><url>https://davidjbrossard.github.io/pdp-demo/data/users.json</url></connection><mapping><xacmlAttribute Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" AttributeId=\"users.json\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" Issuer=\"\"/><contentType>application/json</contentType></mapping></configuration>"
+  ParserUsers:
     className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
     provides:
-    - recipient.internal.userId
-    - recipient.internal.ecIndicator
-    configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<configuration\
-      \ xmlns=\"http://www.axiomatics.com/attributeconnector/parser/json/configuration\"\
-      \n    identifier=\"recipient.idp_data-extractor\">\n    <source>\n        <xacmlAttribute\
-      \ AttributeId=\"recipient.internal.idp_data\"\n                Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject\"\
-      \n                DataType=\"http://www.w3.org/2001/XMLSchema#string\" />\n\
-      \    </source>\n    <mapping>\n        <xacmlAttribute AttributeId=\"recipient.internal.ecIndicator\"\
-      \n                Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject\"\
-      \n                DataType=\"http://www.w3.org/2001/XMLSchema#string\" />\n\
-      \        <jsonPath>$.value[*].extension_2525e567f2b741c3aa989715bdcdf415_geECindicator</jsonPath>\n\
-      \    </mapping>\n    <mapping> \n        <xacmlAttribute AttributeId=\"recipient.internal.userId\"\
-      \ \n            Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject\"\
-      \n            DataType=\"http://www.w3.org/2001/XMLSchema#string\" />\n    \
-      \    <jsonPath>$.value[*].employeeId</jsonPath>\n    </mapping>\n</configuration>"
+    - user.department
+    - user.role
+    configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><configuration xmlns=\"http://www.axiomatics.com/attributeconnector/parser/json/configuration\" identifier=\"demoUserParser\"><source><xacmlAttribute AttributeId=\"users.json\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /></source><mapping><xacmlAttribute AttributeId=\"user.role\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.name == '##1##')].role</jsonPath><key><xacmlAttribute AttributeId=\"user.name\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping><mapping><xacmlAttribute AttributeId=\"user.department\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.name == '##1##')].department</jsonPath><key><xacmlAttribute AttributeId=\"user.name\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping></configuration>"
+  GithubRecords:
+    className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
+    provides:
+    - records.json
+  configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><configuration xmlns=\"http://www.axiomatics.com/http.config\" identifier=\"aadRecipientPayload\"><connection><url>https://davidjbrossard.github.io/pdp-demo/data/records.json</url><method>GET</method></connection><mapping><xacmlAttribute Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" AttributeId=\"records.json\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" Issuer=\"\"/><contentType>application/json</contentType></mapping></configuration>"
+  ParserRecords:
+    className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
+    provides:
+    - record.department
+    - record.name
+    configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><configuration xmlns=\"http://www.axiomatics.com/attributeconnector/parser/json/configuration\" identifier=\"records.parser\"><source><xacmlAttribute AttributeId=\"records.json\" Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /></source><mapping><xacmlAttribute AttributeId=\"record.department\" Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.id==##1##)].department</jsonPath><key><xacmlAttribute Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" AttributeId=\"records.id\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping><mapping><xacmlAttribute AttributeId=\"record.name\" Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.id==####)].name</jsonPath><key><xacmlAttribute Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\" AttributeId=\"records.id\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping></configuration>"

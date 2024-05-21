@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/http.config" identifier="demoUserJson">
+  <connection>
+    <url>https://davidjbrossard.github.io/pdp-demo/data/users.json</url>
+  </connection>
+  <mapping>
+    <xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="users.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+    <contentType>application/json</contentType>
+  </mapping>
+</configuration>
