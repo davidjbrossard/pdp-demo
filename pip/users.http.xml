@@ -2,6 +2,7 @@
 <configuration xmlns="http://www.axiomatics.com/http.config" identifier="demoUserJson">
   <connection>
     <url>https://davidjbrossard.github.io/pdp-demo/data/users.json</url>
+    <method>GET</method>
   </connection>
   <mapping>
     <xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="users.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
