@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "name": "Alice",
+      "username": "alice",
+      "email": "alice@example.com",
+      "role": "manager",
+      "department": "sales"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "username": "bob",
+      "email": "bob@example.com",
+      "role": "employee",
+      "department": "sales"
+    },
+    {
+      "id": 3,
+      "name": "Carol",
+      "username": "carol",
+      "email": "carol@example.com",
+      "role": "contractor",
+      "department": "engineering"
+    },
+    {
+      "id": 4,
+      "name": "Dan",
+      "username": "dan",
+      "email": "dan@example.com",
+      "role": "customer",
+      "department": "finance"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "name": "Blueprint",
+      "department": "sales"
+    },
+    {
+      "id": 2,
+      "name": "Goals",
+      "department": "sales"
+    },
+    {
+      "id": 3,
+      "name": "Product Overview",
+      "department": "engineering"
+    },
+    {
+      "id": 4,
+      "name": "FY24 Results",
+      "department": "finance"
+    }
+]

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/http.config" identifier="aadRecipientPayload">
+    <connection>
+		<url><![CDATA[https://graph.microsoft.us/v1.0/users/?$filter=proxyAddresses/any(p:p eq ‘smtp:{0}’)&$select=mailNickname,extension_2525e567f2b741c3aa989715bdcdf415_geECindicator]]></url>
+		<authentication authenticationMode="OAuth2">
+			<tokenUrl>https://login.microsoftonline.com/${AZURE_AD_TENANT_ID:-000000}/oauth2/v2.0/token</tokenUrl>
+			<clientId>${AZURE_AD_CLIENT_ID:-111111111}</clientId>
+			<clientSecret>${AZURE_AD_CLIENT_SECRET:-2222222}</clientSecret>
+			<scope>https://graph.microsoft.com/.default</scope>
+		</authentication>
+		<connectionKey>
+			<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject" AttributeId="recipient.email" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+		</connectionKey>
+        <method>GET</method>
+		<ignoredHttpCode>404</ignoredHttpCode>
+    </connection>
+    <mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:recipient-subject" AttributeId="recipient.internal.idp_data" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<contentType>application/json</contentType>
+		<template classpath="true" payload="false">/request.template.json</template>
+    </mapping>
+</configuration>
