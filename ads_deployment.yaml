@@ -1,6 +1,6 @@
 # Basic configuration
 domain: https://davidjbrossard.github.io/pdp-demo/domain_tutorial.yaml
-domainRefreshInterval: 30 seconds
+domainRefreshInterval: 5 seconds
 reportUnhealthyOnDomainRefreshError: true
 failOnDeclaredAttributeNotProvided: false
 license: ./conf/axiomatics_PDP.license
