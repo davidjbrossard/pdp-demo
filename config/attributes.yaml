@@ -1,0 +1,56 @@
+action.actionId:
+  xacmlId: action.actionId
+  category: Action
+  datatype: string
+object.objectType:
+  xacmlId: object.objectType
+  category: Resource
+  datatype: string
+record.department:
+  xacmlId: record.department
+  category: Resource
+  datatype: string
+record.recordId:
+  xacmlId: record.recordId
+  category: Resource
+  datatype: string
+record.name:
+  xacmlId: record.name
+  category: Resource
+  datatype: string
+records.json:
+  xacmlId: records.json
+  category: Resource
+  datatype: string
+record.owner:
+  xacmlId: record.owner
+  category: Resource
+  datatype: string
+record.status:
+  xacmlId: record.status
+  category: Resource
+  datatype: string
+user.employeeId:
+  xacmlId: user.employeeId
+  category: AccessSubject
+  datatype: string
+users.json:
+  xacmlId: users.json
+  category: AccessSubject
+  datatype: string
+user.subordinate:
+  xacmlId: user.subordinate
+  category: AccessSubject
+  datatype: string
+user.role:
+  xacmlId: user.role
+  category: AccessSubject
+  datatype: string
+user.name:
+  xacmlId: user.name
+  category: AccessSubject
+  datatype: string
+user.department:
+  xacmlId: user.department
+  category: AccessSubject
+  datatype: string
