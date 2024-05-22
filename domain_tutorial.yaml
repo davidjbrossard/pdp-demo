@@ -65,45 +65,45 @@ attributes:
     category: AccessSubject
     datatype: string
 attributeConnectors:
-  GithubUsers:
-    className: com.axiomatics.attributeconnector.http.ConnectorModule
-    provides:
-    - users.json
-    configurationString: |
-      <?xml version="1.0" encoding="UTF-8"?>
-      <configuration xmlns="http://www.axiomatics.com/http.config" identifier="demoUserJson">
-        <connection>
-          <url>https://davidjbrossard.github.io/pdp-demo/data/users.json</url>
-          <method>GET</method>
-        </connection>
-        <mapping>
-          <xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="users.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
-          <contentType>application/json</contentType>
-        </mapping>
-      </configuration>
+  # GithubUsers:
+  #   className: com.axiomatics.attributeconnector.http.ConnectorModule
+  #   provides:
+  #   - users.json
+  #   configurationString: |
+  #     <?xml version="1.0" encoding="UTF-8"?>
+  #     <configuration xmlns="http://www.axiomatics.com/http.config" identifier="demoUserJson">
+  #       <connection>
+  #         <url>https://davidjbrossard.github.io/pdp-demo/data/users.json</url>
+  #         <method>GET</method>
+  #       </connection>
+  #       <mapping>
+  #         <xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="users.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+  #         <contentType>application/json</contentType>
+  #       </mapping>
+  #     </configuration>
   # ParserUsers:
   #   className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
   #   provides:
   #   - user.department
   #   - user.role
   #   configurationString: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><configuration xmlns=\"http://www.axiomatics.com/attributeconnector/parser/json/configuration\" identifier=\"demoUserParser\"><source><xacmlAttribute AttributeId=\"users.json\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /></source><mapping><xacmlAttribute AttributeId=\"user.role\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.name == '##1##')].role</jsonPath><key><xacmlAttribute AttributeId=\"user.name\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping><mapping><xacmlAttribute AttributeId=\"user.department\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\" /><jsonPath>$.[?(@.name == '##1##')].department</jsonPath><key><xacmlAttribute AttributeId=\"user.name\" Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\" DataType=\"http://www.w3.org/2001/XMLSchema#string\"/></key></mapping></configuration>"
-  GithubRecords:
-    className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
-    provides:
-    - records.json
-    configurationString: |
-      <?xml version="1.0" encoding="UTF-8"?>
-      <configuration xmlns="http://www.axiomatics.com/http.config" identifier="aadRecipientPayload">
-          <connection>
-              <url>https://davidjbrossard.github.io/pdp-demo/data/records.json</url>
-              <method>GET</method>
-          </connection>
-          <mapping>
-              <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" 
-                              AttributeId="records.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
-              <contentType>application/json</contentType>
-          </mapping>
-      </configuration>
+  # GithubRecords:
+  #   className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
+  #   provides:
+  #   - records.json
+  #   configurationString: |
+  #     <?xml version="1.0" encoding="UTF-8"?>
+  #     <configuration xmlns="http://www.axiomatics.com/http.config" identifier="aadRecipientPayload">
+  #         <connection>
+  #             <url>https://davidjbrossard.github.io/pdp-demo/data/records.json</url>
+  #             <method>GET</method>
+  #         </connection>
+  #         <mapping>
+  #             <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" 
+  #                             AttributeId="records.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+  #             <contentType>application/json</contentType>
+  #         </mapping>
+  #     </configuration>
   # ParserRecords:
   #   className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
   #   provides:
