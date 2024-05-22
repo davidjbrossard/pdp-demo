@@ -1,5 +1,5 @@
 namespace demo{
-    policy allowAll{
+    policy myPolicy{
         apply firstApplicable
         rule allow {
             permit
