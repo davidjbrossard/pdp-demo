@@ -1,0 +1,141 @@
+Release notes for Authorization Domain Tool (DOMTOOL)
+=====================================================
+
+New features and changed functionality in DOMTOOL 0.9
+-----------------------------------------------------
+
+None.
+
+Fixed issues in DOMTOOL 0.9
+---------------------------
+
+### Access Decision Service (ADS) variable substitutions are not accepted as values for integer fields
+
+The domain schema validator rejected, for example, the following:
+
+  resourceId:
+    maxItems: ${NAMESPACE.ENV_VAR:-10000}
+
+because it expected the value of 'maxItems' to be an integer.
+
+In these situations, the application now accepts either an integer
+or a string that _may_ represent a YAML/JSON integer after variable substitution.
+Accepted strings are the ones starting with '${', ending in '}', and not containing newlines.
+This should allow for common patterns of variable substitution.
+
+Known issues in DOMTOOL 0.9
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.8
+-----------------------------------------------------
+
+None.
+
+Fixed issues in DOMTOOL 0.8
+---------------------------
+
+### Failure to write policy file when the policy identifier was an ASM generated URI
+
+This has been fixed. Now, policies identified with ASM generated unique identifiers
+following the pattern 'http://www.axiomatics.com/automatic-unique-id/<UUID>'
+will be written into files with file names '<UUID>.xml'.
+
+Known issues in DOMTOOL 0.8
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.7
+-----------------------------------------------------
+
+None.
+
+Fixed issues in DOMTOOL 0.7
+---------------------------
+
+###  Regression: attribute connector sections containing metadata were incorrectly rejected as valid input
+
+This has been fixed. Now attribute connector sections containing metadata
+will be accepted for input, as it was the case in version 0.5.
+
+Known issues in DOMTOOL 0.7
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.6
+-----------------------------------------------------
+
+### Improved error reporting for structural issues in input files.
+
+Fixed issues in DOMTOOL 0.6
+---------------------------
+
+###  Null pointer exceptions occurred when existing input YAML files were left empty.
+
+This has been fixed. Now, if an existing attributes, attribute cache, policy or metadata section file is empty
+it will not cause the tool to throw a null pointer exception;
+instead, the tool will behave the same as if the file was absent.
+
+Known issues in DOMTOOL 0.6
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.5
+-----------------------------------------------------
+
+None.
+
+Fixed issues in DOMTOOL 0.5
+---------------------------
+
+###  Failures reading attribute connector configuration strings in YAML format from separate files.
+
+When an attribute connector configuration string in YAML format is stored as a separate file,
+the tool may fail to read it, reporting a spurious parsing error message.
+This has been fixed.
+
+Known issues in DOMTOOL 0.5
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.4
+-----------------------------------------------------
+
+None.
+
+Fixed issues in DOMTOOL 0.4
+---------------------------
+
+### The "domain" command rejected input in directory format missing a "policy" sub-directory
+
+When using the "domain" command, using an input domain in directory format
+that was missing a "policy" sub-directory produced an error. This has been fixed.
+
+### Command line interface reports incorrect tool version
+
+This has been fixed.
+
+Known issues in DOMTOOL 0.4
+---------------------------
+
+None.
+
+New features and changed functionality in DOMTOOL 0.3
+-----------------------------------------------------
+
+This is the first beta release of DOMTOOL.
+
+Fixed issues in DOMTOOL 0.3
+---------------------------
+
+None.
+
+Known issues in DOMTOOL 0.3
+---------------------------
+
+None.
