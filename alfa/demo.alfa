@@ -2,7 +2,7 @@ namespace demo{
     policy allowAll{
         apply firstApplicable
         rule allow {
-            deny
+            permit
         }
     }
 }
