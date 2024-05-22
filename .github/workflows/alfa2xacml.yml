@@ -14,6 +14,5 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
   
-      - run: java -jar "bin/alfac.jar" "config/policy/alfa" -o ./config/policy/xacml 
-      - run: bin/domtool-0.9.0/bin/domtool domain --identity=demo --main-policy-id=http://axiomatics.com/alfa/identifier/demo.allowAll --attributes=./config/attributes.yaml  -o ./domain_tutorial.yaml --xacml-specifications ./config/policy/xacml 
-      
+      - run: java -jar "bin/alfac.jar" "./alfa" -o ./xacml 
+      - run: bin/domtool-0.9.0/bin/domtool domain --identity=demo --main-policy-id=http://axiomatics.com/alfa/identifier/demo.allowAll --attributes=./config/attributes.yaml  -o ./domain_tutorial.yaml --xacml-specifications ./xacml 
