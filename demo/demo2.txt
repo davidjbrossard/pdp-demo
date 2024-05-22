@@ -1,0 +1,37 @@
+namespace demo{
+    policy myPolicy{
+        apply firstApplicable
+        rule allowAdmin {
+            target clause custom.role == "admin"
+            permit
+        }
+        rule allowGet {
+            target clause request.method == "GET" 
+                   clause stringStartsWith("/url",request.pathname)
+            permit
+        }
+        rule denyAll {
+            deny
+        }
+    }
+}
+namespace request {
+    attribute method {
+        id = "request.method"
+        type = string
+        category = actionCat
+    }
+    attribute pathname {
+        id = "request.pathname"
+        type = string
+        category = resourceCat
+    }
+}
+
+namespace custom {
+    attribute role {
+        id = "custom.role"
+        type = string
+        category = subjectCat
+    }
+}
