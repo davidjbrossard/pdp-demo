@@ -3,7 +3,6 @@ namespace demo{
         apply firstApplicable
         rule allowGet {
             target clause request.method == "GET" 
-                   clause stringStartsWith("/url",request.pathname)
             permit
         }
         rule denyAll {

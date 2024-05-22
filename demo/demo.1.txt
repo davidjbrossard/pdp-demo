@@ -2,8 +2,8 @@ namespace demo{
     policy myPolicy{
         apply firstApplicable
         rule allowGet {
-            target clause http.method == "GET" 
-                   clause stringStartsWith("/url",http.pathname)
+            target clause request.method == "GET" 
+                   clause stringStartsWith("/url",request.pathname)
             permit
         }
         rule denyAll {
@@ -11,14 +11,14 @@ namespace demo{
         }
     }
 }
-namespace http {
+namespace request {
     attribute method {
-        id = "http.method"
+        id = "request.method"
         type = string
         category = actionCat
     }
     attribute pathname {
-        id = "http.pathname"
+        id = "request.pathname"
         type = string
         category = resourceCat
     }
