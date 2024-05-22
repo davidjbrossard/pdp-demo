@@ -64,7 +64,7 @@ attributes:
     xacmlId: user.department
     category: AccessSubject
     datatype: string
-attributeConnectors:
+# attributeConnectors:
   # GithubUsers:
   #   className: com.axiomatics.attributeconnector.http.ConnectorModule
   #   provides:
