@@ -1,0 +1,137 @@
+AXIOMATICS END USER LICENSE AGREEMENT
+
+BY OPENING, INSTALLING OR USING THE ACCOMPANYING AXIOMATICS AB ("AXIOMATICS ")
+SOFTWARE PROGRAM(S) ("SOFTWARE"), YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTAND
+AND AGREE TO BE BOUND BY THE TERMS AND CONDITIONS SET FORTH BELOW ("AGREEMENT").
+IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, YOU MUST IMMEDIATELY
+DISCONTINUE INSTALLATION AND USE OF THE SOFTWARE AND ALL ACCOMPANYING
+DOCUMENTATION ("DOCUMENTATION").  THE TERM "LICENSEE" BELOW REFERS TO YOUR
+COMPANY.
+
+Use
+
+The Software is licensed by Axiomatics on a non-exclusive basis under the
+software license agreement between Axiomatics and Licensee ("License Agreement")
+and is subject to the terms and conditions of the License Agreement.  The
+Software and Documentation may only be used in accordance with and subject to
+the terms, conditions and restrictions of the License Agreement.  Any third
+party software included with the Software is provided by Axiomatics on a pass-
+through or sublicense basis and is subject to the license terms, conditions and
+restrictions applicable to each third party software product as provided in the
+License Agreement.  The Software may also include certain third party open
+source and free software components ("Open Source Components") each of which is
+licensed under and is subject to the terms, conditions and restrictions set
+forth in the license agreement that accompanies such component.  No additional
+rights or remedies are granted by this Agreement.
+
+Restrictions
+
+Except as otherwise expressly provided in the License Agreement, the Software
+(a) may only be installed on servers owned or controlled by Licensee or its
+affiliate and (b) may not be copied and installed in more than one location.
+
+The Software and Documentation may not be: (a) used or copied other than as
+expressly permitted by the License Agreement; (b) sold, rented, leased,
+sublicensed, loaned, shared, disclosed or transferred, provided on a
+subscription basis, or used in connection with a service bureau or other
+configuration whereby any third party may access, use or benefit from it; (c)
+modified, translated or adapted; (d) reverse-engineered, decompiled,
+disassembled or otherwise used to attempt to discern the source code of the
+Software; or (d) used, exported, imported, provided or disclosed in violation or
+breach of the License Agreement or any applicable laws, orders or regulations.
+Creation of any derivative works of or based on the Software or Documentation,
+and removal, relocation, altering and obscuring of any trademark, copyright or
+other proprietary or restrictive marking or legend on the Software or
+Documentation or any copies thereof, are expressly prohibited.  As used in this
+paragraph, the term "Software" includes object and source code forms thereof.
+
+An Open Source Component may be used, modified, linked and distributed to the
+full extent permitted under the license agreement accompanying and applicable to
+such Open Source Component; provided, that no action may be taken with respect
+to any Open Source Component in conjunction with the Software in any way
+whatsoever that (a) creates any obligation with respect to the Software,
+including the obligation to disclose or distribute its source code, or (b)
+grants to any third party any rights to the Software.
+
+Disclaimer of Warranties
+
+EXCEPT AS EXPRESSLY WARRANTED IN THE LICENSE AGREEMENT, WHICH WARRANTIES ARE
+EXCLUSIVE AND IN LIEU OF ALL OTHER WARRANTIES AND CONDITIONS, EXPRESS,  IMPLIED,
+STATUTORY OR OTHERWISE, THE SOFTWARE IS PROVIDED "AS IS".  AXIOMATICS AND ITS
+AFFILIATES, LICENSORS AND OTHER SUPPLIERS DISCLAIM ALL OTHER WARRANTIES AND
+CONDITIONS, WHETHER WRITTEN OR ORAL, AND WHETHER EXPRESS, IMPLIED, STATUTORY OR
+OTHERWISE, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OR CONDITIONS OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SATISFACTORY QUALITY, NON-
+INFRINGEMENT, OWNERSHIP OR ARISING FROM A COURSE OF DEALING, USAGE OR TRADE
+PRACTICE, ALL OF WHICH ARE HEREBY EXCLUDED TO THE MAXIMUM EXTENT PERMITTED BY
+APPLICABLE LAW.  WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, AXIOMATICS
+SPECIFICALLY DISCLAIMS ANY REPRESENTATION OR WARRANTY (A) THAT THE SOFTWARE WILL
+PERFORM WITHOUT INTERRUPTION OR BE ERROR-FREE, (B) THAT THE SOFTWARE WILL MEET
+LICENSEE'S REQUIREMENTS OR (C) THAT ANY OR ALL DATA PROVIDED THROUGH THE
+SOFTWARE WILL BE ACCURATE, UP-TO-DATE OR COMPLETE.
+
+Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, AND EXCEPT AS OTHERWISE EXPRESSLY
+PROVIDED IN THE LICENSE AGREEMENT, IN NO EVENT SHALL AXIOMATICS OR ITS
+AFFILIATES, LICENSORS OR OTHER SUPPLIERS HAVE ANY LIABILITY WHATSOEVER TO
+LICENSEE OR ANY OTHER PERSON OR ENTITY FOR ANY LOSS OR DAMAGES IN CONNECTION
+WITH THIS AGREEMENT, WHETHER BASED IN CONTRACT, TORT (INCLUDING NEGLIGENCE),
+BREACH OF STATUTORY DUTY, STRICT LIABILITY OR OTHERWISE, WHETHER DIRECT,
+INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY OR CONSEQUENTIAL, AND WHETHER
+FOR LOST PROFITS, LOST BUSINESS, REVENUES OR SAVINGS, BUSINESS INTERRUPTION,
+LOSS OF GOODWILL, LOSS OF ANTICIPATED SAVINGS, LOSS, CORRUPTION OR MODIFICATION
+OF DATA, OR OTHERWISE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR
+DAMAGES.  Nothing in this Agreement shall exclude or limit any liability that
+cannot be excluded or limited by applicable law.
+
+Ownership
+
+Licensee’s rights to the Software and Documentation are limited to those
+expressly granted in the License Agreement.  As between the parties, Axiomatics
+or its licensors, as applicable, retains all right, title and interest,
+including without limitation all patent, copyright, database, trade secret,
+trademark and other intellectual property rights and proprietary rights, in and
+to: (a) the Software (in object code and source code form) and Documentation;
+(b) any and all services provided by Axiomatics with respect to the Software or
+Documentation and any and all deliverables furnished by Axiomatics to Licensee
+as part of such services; (c) any and all ideas, suggestions, modifications,
+improvements or other feedback that Licensee proposes, creates or authors
+relating to any of the foregoing, all intellectual property and other rights in
+which are assigned to Axiomatics; and (d) any and all improvements,
+modifications, translations and derivative works of any of the foregoing.
+
+Confidentiality
+
+The Software (including without limitation its design, layout, architecture and
+code) and Documentation and all feedback constitute Confidential Information of
+Axiomatics as defined in the License Agreement.  Disclosure of such Confidential
+Information is strictly prohibited, except as specifically permitted by the
+terms of the License Agreement. Trademarks Axiomatics is a registered trademark
+of Axiomatics AB.  All other trademarks, trade names, service marks and logos
+are the property of their respective holders.  Axiomatics and the licensors of
+all third party software reserve all rights to their trademarks, trade names,
+service marks and logos, and no right to use, modify or reproduce any thereof is
+granted.
+
+Termination
+
+The license granted by Axiomatics under the License Agreement is subject to
+termination in accordance with, and with the effect set forth in, the License
+Agreement.  Upon termination of any license, all copies of the Software and
+Documentation must be returned or, at Axiomatics’ election, destroyed.
+
+General
+
+This Agreement may not be assigned, in whole or in part, by Licensee in any
+manner, including by operation of law, to any other person or entity without the
+express prior written approval of Axiomatics.  This Agreement shall be governed
+by and construed in accordance with the laws of the jurisdiction specified in
+the License Agreement, without regard to any conflict of laws rules that might
+otherwise apply.  This Agreement may be amended, or any provision hereof waived,
+only by written agreement signed by Axiomatics and Licensee.  Any failure or
+delay to enforce or exercise any right or remedy shall not be deemed a waiver of
+such or any other right or remedy.  Any waiver of any breach shall not be deemed
+to be a waiver of any other or subsequent breach.  In the event of a conflict
+between the terms of this Agreement and the terms of the License Agreement, the
+terms of the License Agreement shall control.
