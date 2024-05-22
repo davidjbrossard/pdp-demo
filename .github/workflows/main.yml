@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload AuthZ Domain
-          path: 'domain_tutorial.yaml'
+          path: './domain_tutorial.yaml'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
