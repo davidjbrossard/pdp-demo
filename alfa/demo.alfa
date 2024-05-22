@@ -1,6 +1,10 @@
 namespace demo{
     policy myPolicy{
         apply firstApplicable
+        rule allowAdmin {
+            target clause custom.role == "admin"
+            permit
+        }
         rule allowGet {
             target clause request.method == "GET" 
                    clause stringStartsWith("/test",request.pathname)
@@ -21,5 +25,13 @@ namespace request {
         id = "request.pathname"
         type = string
         category = resourceCat
+    }
+}
+
+namespace custom {
+    attribute role {
+        id = "custom.role"
+        type = string
+        category = subjectCat
     }
 }
