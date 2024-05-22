@@ -1,6 +1,6 @@
 namespace demo{
     policy myPolicy{
-        apply firstApplicable
+        apply denyOverrides
         rule allowAdmin {
             target clause custom.role == "admin"
             permit
