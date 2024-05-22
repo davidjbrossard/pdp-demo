@@ -39,13 +39,14 @@ jobs:
       - run: java -jar "bin/alfac.jar" "./alfa" -o ./xacml 
       - run: bin/domtool-0.9.0/bin/domtool domain --identity=demo --main-policy-id=http://axiomatics.com/alfa/identifier/demo.allowAll --attributes=./config/attributes.yaml  -o ./domain_tutorial.yaml --xacml-specifications ./xacml 
 
+      - run: |
+          mkdir -p ./_site
+          cp ./domain_tutorial.yaml ./_site
+          cp ./ads_deployment.yaml ./_site
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload AuthZ Domain
-          path: './domain_tutorial.yaml'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
