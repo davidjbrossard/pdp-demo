@@ -17,7 +17,7 @@ policy:
     DataType="http://www.w3.org/2001/XMLSchema#string">/url</xacml3:AttributeValue><xacml3:AttributeDesignator
     AttributeId="http.pathname" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
     DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/></xacml3:Match></xacml3:AllOf></xacml3:AnyOf></xacml3:Target></xacml3:Rule><xacml3:Rule
-    Effect="Deny" RuleId="demo.myPolicy.denyAll"><xacml3:Description/><xacml3:Target/></xacml3:Rule></xacml3:Policy>
+    Effect="Permit" RuleId="demo.myPolicy.denyAll"><xacml3:Description/><xacml3:Target/></xacml3:Rule></xacml3:Policy>
 attributes:
   action.actionId:
     xacmlId: action.actionId
