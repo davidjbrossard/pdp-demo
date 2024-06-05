@@ -7,7 +7,7 @@ namespace demo{
         }
         rule allowGet {
             target clause request.method == "GET" 
-                   clause stringStartsWith("/test",request.pathname)
+                   clause stringStartsWith("/url",request.pathname)
             permit
         }
         rule denyAll {
