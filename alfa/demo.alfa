@@ -2,7 +2,7 @@ namespace demo{
     policy myPolicy{
         apply firstApplicable
         rule allowAdmin {
-            target clause custom.role == "admin"
+            target clause custom.role == "super duper admin"
             permit
         }
         rule allowGet {
