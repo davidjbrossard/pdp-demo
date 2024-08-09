@@ -2,6 +2,7 @@
 name: Deploy to GitHub Pages
 env:
   DOMAIN_OUTPUT: './domain_tutorial.yaml'
+  MD_OUTPUT: './domain.md'
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -40,14 +41,16 @@ jobs:
       - run: java -jar "bin/alfac.jar" "./alfa" -o ./xacml 
       - run: bin/domtool-0.9.0/bin/domtool domain --identity=demo --main-policy-id=http://axiomatics.com/alfa/identifier/demo.myPolicy --attributes=./config/attributes.yaml  -o ${{ env.DOMAIN_OUTPUT }} --xacml-specifications ./xacml 
 
-      - run: |
-          mkdir -p ./_site
-          cp ${{ env.DOMAIN_OUTPUT }} ./_site
-          cp ./ads_deployment.yaml ./_site
       - name: Analyze Domain
         uses: davidjbrossard/domain-analyzer@v1.4
         with:
           domain-file: ${{ env.DOMAIN_OUTPUT }}
+          output-file: ${{ env.MD_OUTPUT}}
+      - run: |
+          mkdir -p ./_site
+          cp ${{ env.DOMAIN_OUTPUT }} ./_site
+          cp ./ads_deployment.yaml ./_site
+          cp ${{ env.DOMAIN_OUTPUT }} ./site
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
