@@ -43,6 +43,10 @@ jobs:
           mkdir -p ./_site
           cp ./domain_tutorial.yaml ./_site
           cp ./ads_deployment.yaml ./_site
+      - name: Analyze Domain
+        uses: davidjbrossard/domain-analyzer@v1.2
+        with:
+          who-to-greet: './domain_tutorial.yaml'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
