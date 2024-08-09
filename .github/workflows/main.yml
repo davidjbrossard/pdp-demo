@@ -1,7 +1,7 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy to GitHub Pages
 env:
-  DOMAIN_OUTPUT: ./domain_tutorial.yaml
+  DOMAIN_OUTPUT: './domain_tutorial.yaml'
 on:
   # Runs on pushes targeting the default branch
   push:
