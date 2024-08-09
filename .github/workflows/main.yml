@@ -45,7 +45,7 @@ jobs:
           cp ${{ env.DOMAIN_OUTPUT }} ./_site
           cp ./ads_deployment.yaml ./_site
       - name: Analyze Domain
-        uses: davidjbrossard/domain-analyzer@v1.3
+        uses: davidjbrossard/domain-analyzer@v1.4
         with:
           domain-file: ${{ env.DOMAIN_OUTPUT }}
       - name: Setup Pages
