@@ -50,7 +50,7 @@ jobs:
           mkdir -p ./_site
           cp ${{ env.DOMAIN_OUTPUT }} ./_site
           cp ./ads_deployment.yaml ./_site
-          cp ${{ env.DOMAIN_OUTPUT }} ./site
+          cp ${{ env.MD_OUTPUT }} ./site
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
