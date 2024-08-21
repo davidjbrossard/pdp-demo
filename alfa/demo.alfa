@@ -10,6 +10,14 @@ namespace demo{
                    clause stringStartsWith("/test",request.pathname)
             permit
         }
+        /**
+         * POST access
+         */
+        rule allowPost {
+            target clause request.method == "POST" 
+                   clause stringStartsWith("/test",request.pathname)
+            permit
+        }
         rule denyAll {
             deny
         }
