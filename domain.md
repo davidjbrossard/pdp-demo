@@ -56,7 +56,7 @@
  - [demo.myPolicy.allowGet](#demo.myPolicy.allowGet)
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [demo.myPolicy.allowPost](#demo.myPolicy.allowPost)
-   - POST access
+   - POST access.
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [demo.myPolicy.denyAll](#demo.myPolicy.denyAll)
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)

@@ -22,7 +22,7 @@ policy:
     DataType="http://www.w3.org/2001/XMLSchema#string">/test</xacml3:AttributeValue><xacml3:AttributeDesignator
     AttributeId="request.pathname" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
     DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/></xacml3:Match></xacml3:AllOf></xacml3:AnyOf></xacml3:Target></xacml3:Rule><xacml3:Rule
-    Effect="Permit" RuleId="demo.myPolicy.allowPost"><xacml3:Description>POST access</xacml3:Description><xacml3:Target><xacml3:AnyOf><xacml3:AllOf><xacml3:Match
+    Effect="Permit" RuleId="demo.myPolicy.allowPost"><xacml3:Description>POST access.</xacml3:Description><xacml3:Target><xacml3:AnyOf><xacml3:AllOf><xacml3:Match
     MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal"><xacml3:AttributeValue
     DataType="http://www.w3.org/2001/XMLSchema#string">POST</xacml3:AttributeValue><xacml3:AttributeDesignator
     AttributeId="request.method" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
