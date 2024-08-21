@@ -8,16 +8,21 @@ policy:
     xmlns:xacml3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyId="http://axiomatics.com/alfa/identifier/demo.myPolicy"
     RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable"
     Version="1.0"><xacml3:Description/><xacml3:PolicyDefaults><xacml3:XPathVersion>http://www.w3.org/TR/1999/REC-xpath-19991116</xacml3:XPathVersion></xacml3:PolicyDefaults><xacml3:Target/><xacml3:Rule
+    Effect="Permit" RuleId="demo.myPolicy.allowAdmin"><xacml3:Description/><xacml3:Target><xacml3:AnyOf><xacml3:AllOf><xacml3:Match
+    MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal"><xacml3:AttributeValue
+    DataType="http://www.w3.org/2001/XMLSchema#string">admin</xacml3:AttributeValue><xacml3:AttributeDesignator
+    AttributeId="custom.role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+    DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/></xacml3:Match></xacml3:AllOf></xacml3:AnyOf></xacml3:Target></xacml3:Rule><xacml3:Rule
     Effect="Permit" RuleId="demo.myPolicy.allowGet"><xacml3:Description/><xacml3:Target><xacml3:AnyOf><xacml3:AllOf><xacml3:Match
     MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal"><xacml3:AttributeValue
     DataType="http://www.w3.org/2001/XMLSchema#string">GET</xacml3:AttributeValue><xacml3:AttributeDesignator
-    AttributeId="http.method" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+    AttributeId="request.method" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
     DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/></xacml3:Match></xacml3:AllOf></xacml3:AnyOf><xacml3:AnyOf><xacml3:AllOf><xacml3:Match
     MatchId="urn:oasis:names:tc:xacml:3.0:function:string-starts-with"><xacml3:AttributeValue
-    DataType="http://www.w3.org/2001/XMLSchema#string">/url</xacml3:AttributeValue><xacml3:AttributeDesignator
-    AttributeId="http.pathname" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+    DataType="http://www.w3.org/2001/XMLSchema#string">/test</xacml3:AttributeValue><xacml3:AttributeDesignator
+    AttributeId="request.pathname" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
     DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/></xacml3:Match></xacml3:AllOf></xacml3:AnyOf></xacml3:Target></xacml3:Rule><xacml3:Rule
-    Effect="Permit" RuleId="demo.myPolicy.denyAll"><xacml3:Description/><xacml3:Target/></xacml3:Rule></xacml3:Policy>
+    Effect="Deny" RuleId="demo.myPolicy.denyAll"><xacml3:Description/><xacml3:Target/></xacml3:Rule></xacml3:Policy>
 attributes:
   action.actionId:
     xacmlId: action.actionId
