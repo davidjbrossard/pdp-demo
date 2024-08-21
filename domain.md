@@ -4,7 +4,7 @@
  - Number of YAML policy entries: 1
  - Number of XACML Policy Sets: 0
  - Number of XACML Policies: 1
- - Number of XACML Rules: 3
+ - Number of XACML Rules: 4
 ## Attribute Overview
  - action.actionId
    - Action
@@ -54,6 +54,9 @@
  - [demo.myPolicy.allowAdmin](#demo.myPolicy.allowAdmin)
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [demo.myPolicy.allowGet](#demo.myPolicy.allowGet)
+   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
+ - [demo.myPolicy.allowPost](#demo.myPolicy.allowPost)
+   - POST access
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [demo.myPolicy.denyAll](#demo.myPolicy.denyAll)
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
