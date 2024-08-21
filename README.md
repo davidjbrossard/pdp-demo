@@ -9,6 +9,8 @@ docker build --build-arg ADS_VER=$ADS_VER -t axiomatics/ads-demo:$ADS_VER .
 docker tag axiomatics/ads-demo:$ADS_VER axiomatics/ads-demo:latest
 ````
 
+You can check the contents of your Docker repository by running `docker images`. This should show you one called `axiomatics/ads-demo`.
+
 For the build process to work, you need:
 1. The PDP's jar in `bin/access-decision-service`
 2. Any dependency jars (for PIPs) in `bin/access-decision-service/lib`
