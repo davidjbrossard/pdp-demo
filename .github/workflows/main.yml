@@ -33,6 +33,7 @@ jobs:
     permissions:                # Job-level permissions configuration starts here
       contents: write           # 'write' access to repository contents
       id-token: write
+      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4

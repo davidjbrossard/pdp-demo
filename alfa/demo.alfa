@@ -11,7 +11,7 @@ namespace demo{
             permit
         }
         /**
-         * POST access
+         * POST access.
          */
         rule allowPost {
             target clause request.method == "POST" 
