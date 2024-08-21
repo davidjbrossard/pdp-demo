@@ -51,6 +51,17 @@ jobs:
           cp ${{ env.DOMAIN_OUTPUT }} ./_site
           cp ./ads_deployment.yaml ./_site
           cp ${{ env.MD_OUTPUT }} ./_site
+      - name: Commit files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ${{ env.MD_OUTPUT }}
+          git commit -a -m "Update ${{ env.MD_OUTPUT }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
