@@ -54,3 +54,29 @@ user.department:
   xacmlId: user.department
   category: AccessSubject
   datatype: string
+
+# The following are mappings for the AuthZEN Search Demo
+action.name:
+  xacmlId: name
+  category: Action
+  datatype: string
+resource.type:
+  xacmlId: type
+  category: Resource
+  datatype: string
+# record.owner:
+#   xacmlId: record.owner
+#   category: Resource
+#   datatype: string
+# record.department:
+#   xacmlId: record.department
+#   category: Resource
+#   datatype: string
+resource.id:
+  xacmlId: record.recordId
+  category: Resource
+  datatype: string
+subject.id:
+  xacmlId: user.employeeId
+  category: AccessSubject
+  datatype: string

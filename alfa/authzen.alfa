@@ -1,0 +1,83 @@
+namespace authzen{
+    policyset record{
+        target clause objectType == "record"
+        apply firstApplicable
+        policy viewRecord{
+            target clause action.name == "view"
+            apply firstApplicable
+            rule owners{
+                permit
+                condition record.owner == user.name
+            }
+            rule managers{
+                permit
+                target clause user.role == "manager"
+            }
+        }
+        policy editRecord{
+            target clause action.name == "edit"
+            apply firstApplicable
+            viewRecord.owners
+            rule managers{
+                permit
+                target clause user.role == "manager"
+                condition user.department == record.department
+            }
+        }
+        policy deleteRecord{
+            target clause action.name == "delete"
+            apply firstApplicable
+            viewRecord.owners
+        }
+    }
+
+    namespace action{
+        attribute name {
+            id = "name"
+            type = string
+            category = actionCat
+        }
+    }
+
+    attribute objectType {
+        id = "object.objectType"
+        type = string
+        category = resourceCat
+    }
+
+    namespace record{
+        attribute owner {
+            id = "owner"
+            type = string
+            category = resourceCat
+        }
+        attribute name {
+            id = "name"
+            type = string
+            category = resourceCat
+        }
+        attribute department {
+            id = "department"
+            type = string
+            category = resourceCat
+        }
+    }
+
+    namespace user{
+        attribute name {
+            id = "name"
+            type = string
+            category = subjectCat
+        }
+        attribute role {
+            id = "role"
+            type = string
+            category = subjectCat
+        }
+        attribute department {
+            id = "department"
+            type = string
+            category = subjectCat
+        }
+    }
+}
