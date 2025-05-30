@@ -1,10 +1,10 @@
 # Documentation for domain demo
 ## Overview
- - Number of attributes: 14
- - Number of YAML policy entries: 1
- - Number of XACML Policy Sets: 0
- - Number of XACML Policies: 1
- - Number of XACML Rules: 4
+ - Number of attributes: 18
+ - Number of YAML policy entries: 2
+ - Number of XACML Policy Sets: 1
+ - Number of XACML Policies: 4
+ - Number of XACML Rules: 9
 ## Attribute Overview
  - action.actionId
    - Action
@@ -48,6 +48,18 @@
  - user.department
    - AccessSubject
    - string
+ - name
+   - Action
+   - string
+ - type
+   - Resource
+   - string
+ - record.recordId
+   - Resource
+   - string
+ - user.employeeId
+   - AccessSubject
+   - string
 ## Policy Overview
  - [demo.myPolicy](#demo.myPolicy)
    - parent: [PolicySet](#PolicySet)
@@ -60,6 +72,24 @@
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [demo.myPolicy.denyAll](#demo.myPolicy.denyAll)
    - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
+ - [authzen.record](#authzen.record)
+   - parent: [PolicySet](#PolicySet)
+ - [authzen.record.viewRecord](#authzen.record.viewRecord)
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [authzen.record.editRecord](#authzen.record.editRecord)
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [authzen.record.deleteRecord](#authzen.record.deleteRecord)
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [authzen.record.viewRecord.owners](#authzen.record.viewRecord.owners)
+   - parent: [authzen.record.viewRecord](#authzen.record.viewRecord)
+ - [authzen.record.viewRecord.managers](#authzen.record.viewRecord.managers)
+   - parent: [authzen.record.viewRecord](#authzen.record.viewRecord)
+ - [authzen.record.editRecord/authzen.record.viewRecord.owners](#authzen.record.editRecord/authzen.record.viewRecord.owners)
+   - parent: [authzen.record.editRecord](#authzen.record.editRecord)
+ - [authzen.record.editRecord.managers](#authzen.record.editRecord.managers)
+   - parent: [authzen.record.editRecord](#authzen.record.editRecord)
+ - [authzen.record.deleteRecord/authzen.record.viewRecord.owners](#authzen.record.deleteRecord/authzen.record.viewRecord.owners)
+   - parent: [authzen.record.deleteRecord](#authzen.record.deleteRecord)
 ## Warnings & Recommendations
  - Missing documentation
    - Policy
@@ -73,3 +103,30 @@
  - Missing documentation
    - Rule
    - demo.myPolicy.denyAll
+ - Missing documentation
+   - PolicySet
+   - authzen.record
+ - Missing documentation
+   - Policy
+   - authzen.record.viewRecord
+ - Missing documentation
+   - Policy
+   - authzen.record.editRecord
+ - Missing documentation
+   - Policy
+   - authzen.record.deleteRecord
+ - Missing documentation
+   - Rule
+   - authzen.record.viewRecord.owners
+ - Missing documentation
+   - Rule
+   - authzen.record.viewRecord.managers
+ - Missing documentation
+   - Rule
+   - authzen.record.editRecord/authzen.record.viewRecord.owners
+ - Missing documentation
+   - Rule
+   - authzen.record.editRecord.managers
+ - Missing documentation
+   - Rule
+   - authzen.record.deleteRecord/authzen.record.viewRecord.owners
