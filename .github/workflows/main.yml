@@ -52,8 +52,7 @@ jobs:
           output-file: ${{ env.MD_OUTPUT}}
       - run: |
           mkdir -p ./_site
-#         cp ${{ env.DOMAIN_OUTPUT }} ./_site
-          cp search-interop.yaml ./_site/${{ env.DOMAIN_OUTPUT }} ## Overwrite the domain file for the PDP with the search interop file
+          cp search-interop.yaml ./_site/${{ env.DOMAIN_OUTPUT }}
           cp ./ads_deployment.yaml ./_site
           cp ${{ env.MD_OUTPUT }} ./_site
       - name: Commit files
