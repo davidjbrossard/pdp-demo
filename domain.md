@@ -1,10 +1,10 @@
 # Documentation for domain demo
 ## Overview
  - Number of attributes: 18
- - Number of YAML policy entries: 2
- - Number of XACML Policy Sets: 1
- - Number of XACML Policies: 4
- - Number of XACML Rules: 9
+ - Number of YAML policy entries: 3
+ - Number of XACML Policy Sets: 2
+ - Number of XACML Policies: 7
+ - Number of XACML Rules: 13
 ## Attribute Overview
  - action.actionId
    - Action
@@ -79,6 +79,38 @@
    - parent: [authzen.record.editRecord](#authzen.record.editRecord)
  - [authzen.record.deleteRecord/authzen.record.viewRecord.owners](#authzen.record.deleteRecord/authzen.record.viewRecord.owners)
    - parent: [authzen.record.deleteRecord](#authzen.record.deleteRecord)
+ - [demo.main](#demo.main)
+   - Ensemble de politiques principal pour la gestion des accès aux enregistrements
+Utilise la stratégie "firstApplicable" pour évaluer les politiques dans l'ordre
+   - parent: [PolicySet](#PolicySet)
+ - [demo.main.viewRecords](#demo.main.viewRecords)
+   - Politique de visualisation des enregistrements
+Permet aux managers et aux utilisateurs du même département de voir les enregistrements
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [demo.main.editRecords](#demo.main.editRecords)
+   - Politique de modification des enregistrements
+Seuls les propriétaires peuvent modifier les enregistrements
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [demo.main.deleteRecords](#demo.main.deleteRecords)
+   - Politique de suppression des enregistrements
+Permet uniquement la suppression des brouillons par leur propriétaire
+   - parent: [urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable](#urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable)
+ - [demo.main.viewRecords/demo.managers](#demo.main.viewRecords/demo.managers)
+   - Règle pour les managers
+Accorde automatiquement l'accès à tous les utilisateurs ayant le rôle "manager"
+   - parent: [demo.main.viewRecords](#demo.main.viewRecords)
+ - [demo.main.viewRecords/demo.sameDepartment](#demo.main.viewRecords/demo.sameDepartment)
+   - Règle pour les utilisateurs du même département
+Permet l'accès si l'utilisateur appartient au même département que la ressource
+   - parent: [demo.main.viewRecords](#demo.main.viewRecords)
+ - [demo.main.editRecords/demo.owner](#demo.main.editRecords/demo.owner)
+   - Règle pour les propriétaires de ressources
+Autorise l'accès si l'utilisateur est le propriétaire de la ressource
+   - parent: [demo.main.editRecords](#demo.main.editRecords)
+ - [demo.main.deleteRecords/demo.owner](#demo.main.deleteRecords/demo.owner)
+   - Règle pour les propriétaires de ressources
+Autorise l'accès si l'utilisateur est le propriétaire de la ressource
+   - parent: [demo.main.deleteRecords](#demo.main.deleteRecords)
  - [demo.myPolicy](#demo.myPolicy)
    - parent: [PolicySet](#PolicySet)
  - [demo.myPolicy.allowAdmin](#demo.myPolicy.allowAdmin)
