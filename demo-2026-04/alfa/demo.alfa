@@ -1,18 +1,34 @@
 namespace demo {
+    /**
+     * Ensemble de politiques principal pour la gestion des accès aux enregistrements
+     * Utilise la stratégie "firstApplicable" pour évaluer les politiques dans l'ordre
+     */
     policyset main{
         target clause resource.Type == "record"
         apply firstApplicable
+        /**
+         * Politique de visualisation des enregistrements
+         * Permet aux managers et aux utilisateurs du même département de voir les enregistrements
+         */
         policy viewRecords{
             target clause action.name == "view"
             apply firstApplicable
             managers
             sameDepartment
         }
+        /**
+         * Politique de modification des enregistrements
+         * Seuls les propriétaires peuvent modifier les enregistrements
+         */
         policy editRecords{
             target clause action.name == "edit"
             apply firstApplicable
             owner
         }
+        /**
+         * Politique de suppression des enregistrements
+         * Permet uniquement la suppression des brouillons par leur propriétaire
+         */
         policy deleteRecords{
             target clause action.name == "delete" and resource.status == "draft"
             apply firstApplicable
@@ -22,14 +38,26 @@ namespace demo {
     }
 
 
+    /**
+     * Règle pour les managers
+     * Accorde automatiquement l'accès à tous les utilisateurs ayant le rôle "manager"
+     */
     rule managers{
         target clause user.role == "manager"
         permit
     }
+    /**
+     * Règle pour les utilisateurs du même département
+     * Permet l'accès si l'utilisateur appartient au même département que la ressource
+     */
     rule sameDepartment{
         permit
         condition user.department == resource.department
     }
+    /**
+     * Règle pour les propriétaires de ressources
+     * Autorise l'accès si l'utilisateur est le propriétaire de la ressource
+     */
     rule owner{
         permit
         condition user.name == resource.owner
