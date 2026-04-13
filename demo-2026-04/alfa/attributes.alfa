@@ -1,0 +1,81 @@
+namespace action {
+    attribute name {
+        id = "action.name"
+        category = actionCat
+        type = string
+    }
+}
+namespace user {
+    attribute name {
+        id = "user.name"
+        category = subjectCat
+        type = string
+    }
+
+    attribute department {
+        id = "user.department"
+        category = subjectCat
+        type = string
+    }
+
+    attribute Id {
+        id = "user.Id"
+        category = subjectCat
+        type = string
+    }
+
+    attribute role {
+        id = "user.role"
+        category = subjectCat
+        type = string
+    }
+
+    attribute Type {
+        id = "user.Type"
+        category = subjectCat
+        type = string
+    }
+}
+namespace resource {
+    attribute name {
+        id = "resource.name"
+        category = resourceCat
+        type = string
+    }
+
+    attribute status {
+        id = "resource.status"
+        category = resourceCat
+        type = string
+    }
+
+    attribute Id {
+        id = "resource.Id"
+        category = resourceCat
+        type = string
+    }
+
+    attribute Type {
+        id = "resource.Type"
+        category = resourceCat
+        type = string
+    }
+
+    attribute department {
+        id = "resource.department"
+        category = resourceCat
+        type = string
+    }
+
+    attribute applicationName {
+        id = "resource.applicationName"
+        category = resourceCat
+        type = string
+    }
+
+    attribute owner {
+        id = "resource.owner"
+        category = resourceCat
+        type = string
+    }
+}

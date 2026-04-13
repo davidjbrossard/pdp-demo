@@ -1,0 +1,37 @@
+namespace demo {
+    policyset main{
+        target clause resource.Type == "record"
+        apply firstApplicable
+        policy viewRecords{
+            target clause action.name == "view"
+            apply firstApplicable
+            managers
+            sameDepartment
+        }
+        policy editRecords{
+            target clause action.name == "edit"
+            apply firstApplicable
+            owner
+        }
+        policy deleteRecords{
+            target clause action.name == "delete" and resource.status == "draft"
+            apply firstApplicable
+            owner
+        }
+
+    }
+
+
+    rule managers{
+        target clause user.role == "manager"
+        permit
+    }
+    rule sameDepartment{
+        permit
+        condition user.department == resource.department
+    }
+    rule owner{
+        permit
+        condition user.name == resource.owner
+    }
+}
