@@ -28,7 +28,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Download artifacts from triggering workflow
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
