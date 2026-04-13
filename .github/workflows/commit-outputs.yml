@@ -1,0 +1,89 @@
+# Workflow to commit generated outputs after deployments complete
+name: Commit Generated Outputs
+
+on:
+  workflow_run:
+    workflows: 
+      - "Deploy to GitHub Pages"
+      - "Deploy April 2026 Demo to GitHub Pages"
+    types:
+      - completed
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  commit:
+    # Only run if the triggering workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # Need to fetch the latest state since other workflows may have run
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Download artifacts from triggering workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: ${{ github.event.workflow_run.id }},
+            });
+            
+            for (const artifact of artifacts.data.artifacts) {
+              if (artifact.name === 'analysis-output') {
+                const download = await github.rest.actions.downloadArtifact({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  artifact_id: artifact.id,
+                  archive_format: 'zip',
+                });
+                
+                const fs = require('fs');
+                fs.writeFileSync('analysis-output.zip', Buffer.from(download.data));
+              }
+            }
+
+      - name: Extract artifacts
+        run: |
+          if [ -f analysis-output.zip ]; then
+            unzip -o analysis-output.zip
+            ls -la
+          fi
+
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add any .md files that were generated
+          if [ -f domain.md ]; then
+            git add domain.md
+            echo "Found domain.md"
+          fi
+          if [ -f domain.2026.04.md ]; then
+            git add domain.2026.04.md
+            echo "Found domain.2026.04.md"
+          fi
+          
+          # Check if there are any changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          git status
+          git commit -m "Update generated domain documentation files"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

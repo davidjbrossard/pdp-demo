@@ -4,8 +4,11 @@ env:
   DOMAIN_OUTPUT: './domain_tutorial.2026.04.yaml'
   MD_OUTPUT: './domain.2026.04.md'
 on:
-  # Runs on pushes targeting the default branch
-  push:
+  # Runs after the main workflow completes successfully
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types:
+      - completed
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -24,16 +27,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # Job 1: Build and compile ALFA policies
+  build:
+    # Only run if the main workflow succeeded, or if manually triggered
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
-    permissions:                # Job-level permissions configuration starts here
-      contents: write           # 'write' access to repository contents
-      id-token: write
-      pages: write
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -45,16 +45,69 @@ jobs:
       - run: java -jar "bin/alfac.jar" "./alfa" -o ./demo-2026-04/xacml 
       - run: bin/domtool-0.9.0/bin/domtool domain --identity=demo.2026.04 --main-policy-id=http://axiomatics.com/alfa/identifier/demo.main --attributes=./demo-2026-04/config/attributes.yaml  -o ${{ env.DOMAIN_OUTPUT }} --xacml-specifications ./demo-2026-04/xacml 
 
+      - name: Upload domain output
+        uses: actions/upload-artifact@v4
+        with:
+          name: domain-output
+          path: |
+            ${{ env.DOMAIN_OUTPUT }}
+            ./demo-2026-04/xacml
+
+  # Job 2: Analyze domain (depends on build)
+  analyze:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Download domain output
+        uses: actions/download-artifact@v4
+        with:
+          name: domain-output
+      
       - name: Analyze Domain
         uses: davidjbrossard/domain-analyzer@v1.5
         with:
           domain-file: ${{ env.DOMAIN_OUTPUT }}
           output-file: ${{ env.MD_OUTPUT}}
+      
+      - name: Upload analysis output
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-output
+          path: ${{ env.MD_OUTPUT }}
+
+  # Job 3: Deploy to GitHub Pages (depends on analyze)
+  deploy:
+    needs: analyze
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Download domain output
+        uses: actions/download-artifact@v4
+        with:
+          name: domain-output
+      - name: Download analysis output
+        uses: actions/download-artifact@v4
+        with:
+          name: analysis-output
+      
       - run: |
           mkdir -p ./_site
           cp search-interop.yaml ./_site/${{ env.DOMAIN_OUTPUT }}
           cp ./ads_deployment.yaml ./_site
           cp ${{ env.MD_OUTPUT }} ./_site
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -64,15 +117,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-      - name: Commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add ${{ env.MD_OUTPUT }}
-          git status
-          git commit -a -m "Update ${{ env.MD_OUTPUT }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
