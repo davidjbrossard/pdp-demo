@@ -61,17 +61,6 @@
    - AccessSubject
    - string
 ## Policy Overview
- - [demo.myPolicy](#demo.myPolicy)
-   - parent: [PolicySet](#PolicySet)
- - [demo.myPolicy.allowAdmin](#demo.myPolicy.allowAdmin)
-   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
- - [demo.myPolicy.allowGet](#demo.myPolicy.allowGet)
-   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
- - [demo.myPolicy.allowPost](#demo.myPolicy.allowPost)
-   - POST access.
-   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
- - [demo.myPolicy.denyAll](#demo.myPolicy.denyAll)
-   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
  - [authzen.record](#authzen.record)
    - parent: [PolicySet](#PolicySet)
  - [authzen.record.viewRecord](#authzen.record.viewRecord)
@@ -90,19 +79,18 @@
    - parent: [authzen.record.editRecord](#authzen.record.editRecord)
  - [authzen.record.deleteRecord/authzen.record.viewRecord.owners](#authzen.record.deleteRecord/authzen.record.viewRecord.owners)
    - parent: [authzen.record.deleteRecord](#authzen.record.deleteRecord)
+ - [demo.myPolicy](#demo.myPolicy)
+   - parent: [PolicySet](#PolicySet)
+ - [demo.myPolicy.allowAdmin](#demo.myPolicy.allowAdmin)
+   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
+ - [demo.myPolicy.allowGet](#demo.myPolicy.allowGet)
+   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
+ - [demo.myPolicy.allowPost](#demo.myPolicy.allowPost)
+   - POST access.
+   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
+ - [demo.myPolicy.denyAll](#demo.myPolicy.denyAll)
+   - parent: [urn:oasis:names:tc:xacml:3.0:core:schema:wd-17](#urn:oasis:names:tc:xacml:3.0:core:schema:wd-17)
 ## Warnings & Recommendations
- - Missing documentation
-   - Policy
-   - demo.myPolicy
- - Missing documentation
-   - Rule
-   - demo.myPolicy.allowAdmin
- - Missing documentation
-   - Rule
-   - demo.myPolicy.allowGet
- - Missing documentation
-   - Rule
-   - demo.myPolicy.denyAll
  - Missing documentation
    - PolicySet
    - authzen.record
@@ -130,3 +118,15 @@
  - Missing documentation
    - Rule
    - authzen.record.deleteRecord/authzen.record.viewRecord.owners
+ - Missing documentation
+   - Policy
+   - demo.myPolicy
+ - Missing documentation
+   - Rule
+   - demo.myPolicy.allowAdmin
+ - Missing documentation
+   - Rule
+   - demo.myPolicy.allowGet
+ - Missing documentation
+   - Rule
+   - demo.myPolicy.denyAll
