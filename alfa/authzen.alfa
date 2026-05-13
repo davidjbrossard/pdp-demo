@@ -3,7 +3,7 @@ namespace authzen{
         target clause objectType == "record"
         apply firstApplicable
         policy viewRecord{
-            target clause action.name == "view"
+            target clause action.name == "view" or action.name == "View"
             apply firstApplicable
             rule owners{
                 permit
